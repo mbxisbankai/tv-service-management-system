@@ -1,0 +1,26 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environments
+venv/
+env/
+
+# SQLite database files
+*.db
+*.sqlite3
+
+# VSCode settings (optional)
+.vscode/
+
+# Mac system files (if applicable)
+.DS_Store
+
+# Environment variables or secrets
+.env
+
+# Logs and temporary files
+*.log
+*.tmp
+*.bak
