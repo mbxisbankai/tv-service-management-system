@@ -12,7 +12,7 @@ A Python-based CLI application for managing TV service providers, customers, and
 - Clean command-line interface
 
 ## Technologies used
-- Python 3.8.23
+- Python 3.8.13
 - SQLAlchemy (ORM)
 - SQLite (Database)
 - Alembic (Migrations)
