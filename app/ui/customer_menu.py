@@ -2,10 +2,10 @@ from app.crud.customers import *
 
 def customer_menu():
     while True:
-        print("\n***Customers Menu*** ")
+        print("\n***Customers Menu***")
         print("Select an option")
         print("0: Back to main menu")
-        print("1: View all Customers")
+        print("1: View all customers")
         print("2: Get a customer (ID required)")
         print("3: Get customer's subscriptions (ID required)")
         print("4: Get customer's providers (ID required)")
@@ -14,7 +14,7 @@ def customer_menu():
         print("7: Delete customer (ID required)")
         print("8: Add a subscription (ID, Provider Name & Price required)")
 
-        choice = input("Enter choice: ").strip()
+        choice = input("\nEnter choice: ").strip()
 
         #get_all_customers()
         if choice == "0":

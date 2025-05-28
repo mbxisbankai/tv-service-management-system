@@ -34,7 +34,7 @@ class Subscription( Base ):
     customer = relationship("Customer", back_populates="subscriptions")
 
     def __repr__(self):
-        return f"<Subscription ID {self.id}: Price: {self.price} Sub Date: {self.sub_date} | Exp Date: {self.exp_date}>"
+        return f"<Subscription ID {self.id}: Provider Name: {self.provider_name} | Customer ID: ({self.customer_id}) Price: {self.price} Sub Date: {self.sub_date} | Exp Date: {self.exp_date}>"
     
 class Customer( Base ):
     __tablename__ = "customers"

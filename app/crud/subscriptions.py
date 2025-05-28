@@ -3,6 +3,7 @@ from app.models.models import Provider, Subscription, Customer
 from datetime import datetime
 from sqlalchemy import func
 
+#Don't add to the CLI just yet
 def create_subscription(price, provider_name, customer_id):
     subscription = Subscription(price=price, provider_name=provider_name, customer_id=customer_id)
     session.add(subscription)
