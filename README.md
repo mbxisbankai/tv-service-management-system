@@ -1,6 +1,6 @@
 # TV Service Management System
 
-A Python-based CLI application for managing TV service providers, customers, and their subscriptions. Built using SQLAlchemy and SQLite.
+A Python-based CLI application for managing TV service providers, customers, and their subscriptions. Built using Python, SQLAlchemy and SQLite.
 
 ## Features
 
