@@ -7,11 +7,11 @@ def create_customer(name):
     session.commit()
     return customer
 
-def add_subscription(customer_id, provider_id, price):
+def add_subscription(customer_id, provider_name, price):
 
     subscription = Subscription(
         customer_id=customer_id,
-        provider_id=provider_id,
+        provider_name=provider_name,
         price=price
     )
     session.add(subscription)

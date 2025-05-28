@@ -1,8 +1,8 @@
-"""Tables and relationships created
+"""Created tables with relationships
 
-Revision ID: 7dc63323420e
+Revision ID: b5bf48756220
 Revises: 
-Create Date: 2025-05-27 17:23:04.260960
+Create Date: 2025-05-28 10:30:30.286528
 
 """
 from typing import Sequence, Union
@@ -12,7 +12,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision: str = '7dc63323420e'
+revision: str = 'b5bf48756220'
 down_revision: Union[str, None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
@@ -30,17 +30,18 @@ def upgrade() -> None:
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(), nullable=False),
     sa.Column('tagline', sa.Text(), nullable=True),
-    sa.PrimaryKeyConstraint('id')
+    sa.PrimaryKeyConstraint('id'),
+    sa.UniqueConstraint('name')
     )
     op.create_table('subscriptions',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('price', sa.Float(), nullable=False),
     sa.Column('sub_date', sa.DateTime(), nullable=True),
     sa.Column('exp_date', sa.DateTime(), nullable=True),
-    sa.Column('provider_id', sa.Integer(), nullable=True),
+    sa.Column('provider_name', sa.String(), nullable=True),
     sa.Column('customer_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['customer_id'], ['customers.id'], ),
-    sa.ForeignKeyConstraint(['provider_id'], ['providers.id'], ),
+    sa.ForeignKeyConstraint(['provider_name'], ['providers.name'], ),
     sa.PrimaryKeyConstraint('id')
     )
     # ### end Alembic commands ###

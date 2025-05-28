@@ -3,8 +3,8 @@ from app.models.models import Provider, Subscription, Customer
 from datetime import datetime
 from sqlalchemy import func
 
-def create_subscription(price, provider_id, customer_id):
-    subscription = Subscription(price=price, provider_id=provider_id, customer_id=customer_id)
+def create_subscription(price, provider_name, customer_id):
+    subscription = Subscription(price=price, provider_name=provider_name, customer_id=customer_id)
     session.add(subscription)
     session.commit()
     return subscription
@@ -27,21 +27,21 @@ def get_customer(id):
         return subscription.customer
     return None
 
-def update_subscription(id, price, provider_id, customer_id):
+def update_subscription(id, price, provider_name, customer_id):
     subscription = get_subscription_by_id(id)
     if subscription:
         subscription.price = price
-        subscription.provider_id = provider_id
+        subscription.provider_name = provider_name
         subscription.customer_id = customer_id
         session.commit()
     return subscription
 
 
-def renew_subscription(id, price, provider_id, customer_id):
+def renew_subscription(id, price, provider_name, customer_id):
     subscription = get_subscription_by_id(id)
     if subscription:
         new_subscription = create_subscription(
-            provider_id=provider_id,
+            provider_name=provider_name,
             customer_id=customer_id,
             price=price
         )

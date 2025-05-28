@@ -15,26 +15,26 @@ def get_all_providers():
 def get_provider_by_id(id):
     return session.query(Provider).filter(Provider.id == id).first()
 
-def get_customers(id):
-    return session.query(Customer).join(Subscription).filter(Subscription.provider_id == id).distinct().all()
+def get_customers(name):
+    return session.query(Customer).join(Subscription).filter(Subscription.provider_name == name).distinct().all()
 
-def active_subscriptions(id):
-    return session.query(Subscription).filter(Subscription.provider_id == id, Subscription.exp_date > datetime.now()).distinct().all()
+def active_subscriptions(name):
+    return session.query(Subscription).filter(Subscription.provider_name == name, Subscription.exp_date > datetime.now()).distinct().all()
 
-def inactive_subscriptions(id):
-    return session.query(Subscription).filter(Subscription.provider_id == id, Subscription.exp_date <= datetime.now()).distinct().all()
+def inactive_subscriptions(name):
+    return session.query(Subscription).filter(Subscription.provider_name == name, Subscription.exp_date <= datetime.now()).distinct().all()
 
-def customers_with_inactive_subs(provider_id):
+def customers_with_inactive_subs(provider_name):
     return session.query(Customer).join(Subscription).filter(
-        Subscription.provider_id == provider_id,
+        Subscription.provider_name == provider_name,
         Subscription.exp_date <= datetime.now()
     ).distinct().all()
 
-def total_revenue(provider_id):
+def total_revenue(provider_name):
     total = (
         session.query(func.sum(Subscription.price))
         .filter(
-            Subscription.provider_id == provider_id,
+            Subscription.provider_name == provider_name,
             Subscription.exp_date > datetime.now()
         )
         .scalar()

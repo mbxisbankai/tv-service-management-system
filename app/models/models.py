@@ -11,7 +11,7 @@ class Provider( Base ):
     __tablename__ = "providers"
 
     id = Column(Integer(), primary_key=True)
-    name = Column(String(), nullable=False)
+    name = Column(String(), nullable=False, unique=True)
     tagline = Column(Text())
 
     subscriptions = relationship("Subscription", back_populates="provider")
@@ -27,7 +27,7 @@ class Subscription( Base ):
     sub_date = Column(DateTime(), default=datetime.now)
     exp_date = Column(DateTime(), default=expiry_date)
 
-    provider_id = Column(Integer(), ForeignKey('providers.id'))
+    provider_name = Column(String(), ForeignKey('providers.name'))
     customer_id = Column(Integer(), ForeignKey('customers.id'))
 
     provider = relationship("Provider", back_populates="subscriptions")
