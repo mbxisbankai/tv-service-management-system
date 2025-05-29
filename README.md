@@ -36,6 +36,7 @@ cd tv-service-management-system/
 python cli.py
 ```
 ## The CLI (command-line interface)
+Neon Genesis Themed CLI
 
 ### Main Menu
 ![Main Menu](assets/main_menu.png "Main Menu")
