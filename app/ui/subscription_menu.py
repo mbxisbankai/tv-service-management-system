@@ -27,6 +27,7 @@ def subscription_menu():
                     print(sub)
             else:
                 print("No subscriptions found.")
+            input("\nPress Enter to return to the menu...")
 
         #get_subscription_by_id()
         elif choice == "2":
@@ -36,6 +37,7 @@ def subscription_menu():
                 print(get_subscription_by_id(sub_id))
             else:
                 print(f"No subscription with ID: {sub_id} found")
+            input("\nPress Enter to return to the menu...")
 
         #get_provider()
         elif choice == "3":
@@ -45,6 +47,7 @@ def subscription_menu():
                 print(get_provider(sub_id))
             else:
                 print(f"\nPlease enter a valid subscription ID")
+            input("\nPress Enter to return to the menu...")
 
         #get_customer()
         elif choice == "4":
@@ -54,6 +57,7 @@ def subscription_menu():
                 print(get_customer(sub_id))
             else:
                 print(f"\nPlease enter a valid subscription ID")
+            input("\nPress Enter to return to the menu...")
 
         #update_subscription()
         elif choice == "5":
@@ -67,6 +71,7 @@ def subscription_menu():
                 print(f"\nSubscription to '{p_name}' updated successfully: {updated_subscription}")
             else:
                 print("Missing or invalid arguments. Please review and try again.")
+            input("\nPress Enter to return to the menu...")
 
         #renew_subscription()
         elif choice == "6":
@@ -80,6 +85,7 @@ def subscription_menu():
                 print(f"\nSubscription to '{p_name}' renewed successfully: {renewed_subscription}")
             else:
                 print("Missing or invalid arguments. Please review and try again.")
+            input("\nPress Enter to return to the menu...")
 
         #delete_subscription()
         elif choice == "7":
@@ -98,8 +104,10 @@ def subscription_menu():
                     return
             else:
                 print(f"\nNo subscription with ID: {sub_id} was found")
+            input("\nPress Enter to return to the menu...")
 
         else:
             print("Invalid option, please try again.")
+            input("\nPress Enter to return to the menu...")
 
     

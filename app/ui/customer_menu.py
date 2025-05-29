@@ -29,6 +29,7 @@ def customer_menu():
                     print(customer)
             else:
                 print("No customers found.")
+            input("\nPress Enter to return to the menu...")
         
         #get_customer_by_id()
         elif choice == "2":
@@ -38,6 +39,7 @@ def customer_menu():
                 print(get_customer_by_id(c_id))
             else:
                 print(f"No customer with ID: {c_id} found")
+            input("\nPress Enter to return to the menu...")
 
         #get_subscriptions()
         elif choice == "3":
@@ -49,6 +51,7 @@ def customer_menu():
                     print(subscription)
             else:
                 print(f"No subscriptions found for customer with ID: {c_id}")
+            input("\nPress Enter to return to the menu...")
 
         #get_providers()
         elif choice == "4":
@@ -60,6 +63,7 @@ def customer_menu():
                     print(provider)
             else:
                 print(f"No providers found for customer with ID: {c_id}")
+            input("\nPress Enter to return to the menu...")
 
         #create_customer()
         elif choice == "5":
@@ -69,6 +73,7 @@ def customer_menu():
                 print(f"Customer '{c_name}' created successfully: {new_customer}")
             else:
                 print("Please enter a valid name.")
+            input("\nPress Enter to return to the menu...")
 
         #update_customer()
         elif choice == "6":
@@ -79,6 +84,7 @@ def customer_menu():
                 print(f"\nCustomer '{c_name}' updated successfully: {updated_customer}")
             else:
                 print("Please enter a valid ID and name.")
+            input("\nPress Enter to return to the menu...")
 
         #delete_customer()
         elif choice == "7":
@@ -96,6 +102,7 @@ def customer_menu():
                     return
             else:
                 print(f"No customer with ID: {c_id} was found")
+            input("\nPress Enter to return to the menu...")
 
         elif choice == "8":
             c_id = input("Enter the customer's ID: ").strip()
@@ -106,5 +113,8 @@ def customer_menu():
                 new_subscription = add_subscription(c_id, p_name, sub_price)
                 print(f"Subscription for customer with ID: {c_id} created successfully\n")
                 print(f"Subscription: {new_subscription}")
+            else:
+                print("Please enter a valid customer ID, provider name and subscription price.")
+            input("\nPress Enter to return to the menu...")
         else:
             print("Invalid option, please try again.")
