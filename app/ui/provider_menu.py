@@ -1,7 +1,9 @@
 from app.crud.providers import *
+from app.ui.utils import clear_screen
 
 def provider_menu():
     while True:
+        clear_screen()
         print("\n***Providers Menu***")
         print("Select an option")
         print("0: Back to main menu")
@@ -29,15 +31,17 @@ def provider_menu():
                     print(provider)
             else:
                 print("No providers found")
+            input("\nPress Enter to return to the menu...")
         
         #get_provider_by_name()
         elif choice == "2":
-            p_id = input("Enter the provider's name: ").strip()
-            if p_id:
+            p_name = input("Enter the provider's name: ").strip()
+            if p_name:
                 print("\n")
                 print(get_provider_by_name(p_name))
             else:
                 print("Please enter a valid provider name")
+            input("\nPress Enter to return to the menu...")
         
         #get_customers()
         elif choice == "3":
@@ -52,6 +56,7 @@ def provider_menu():
                     print(f"No customers found for '{p_name}'.")
             else:
                 print(f"\nPlease enter a valid provider name.")
+            input("\nPress Enter to return to the menu...")
 
         #create_provider()
         elif choice == "4":
@@ -63,6 +68,7 @@ def provider_menu():
                 print(f"\nProvider '{p_name}' created successfully.")
             else:
                 print("\nPlease enter a valid provider name and tagline")
+            input("\nPress Enter to return to the menu...")
 
         #active_subscriptions()
         elif choice == "5":
@@ -76,6 +82,7 @@ def provider_menu():
                     print(f"No active subsctiptions for '{p_name}'.")
             else:
                 print("Please enter a valid provider name.")
+            input("\nPress Enter to return to the menu...")
 
         #inactive_subscriptions()
         elif choice == "6":
@@ -89,6 +96,7 @@ def provider_menu():
                     print(f"No inactive subsctiptions for '{p_name}'.")
             else:
                 print("Please enter a valid provider name.")
+            input("\nPress Enter to return to the menu...")
 
         #total_revenue()
         elif choice == "7":
@@ -96,11 +104,12 @@ def provider_menu():
             if p_name:
                 total = total_revenue(p_name)
                 if total:
-                    print(total)
+                    print(f"'{p_name}' made {total} in subscriptions.")
                 else:
                     print(f"\nNo revenue for '{p_name}'.")
             else:
                 print(f"\nNo revenue for '{p_name}'.")
+            input("\nPress Enter to return to the menu...")
 
         #update_provider()
         elif choice == "8":
@@ -113,6 +122,7 @@ def provider_menu():
                 print(f"\nProvider '{p_name}' updated successfully: {updated_provider}")
             else:
                 print("Please enter the valid ID, name and tagline for the provider.")
+            input("\nPress Enter to return to the menu...")
 
         #delete_provider()
         elif choice == "9":
@@ -131,5 +141,7 @@ def provider_menu():
                     return
             else:
                 print("Please enter a valid provider name")
+            input("\nPress Enter to return to the menu...")
         else:
             print("Invalid option, please try again")
+            input("\nPress Enter to return to the menu...")

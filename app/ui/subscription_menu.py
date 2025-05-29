@@ -1,7 +1,9 @@
 from app.crud.subscriptions import *
+from app.ui.utils import clear_screen
 
 def subscription_menu():
     while True:
+        clear_screen()
         print("\n***Subscriptions Menu***")
         print("0: Back to main menu")
         print("1: View all subscriptions")

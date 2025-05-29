@@ -1,7 +1,9 @@
 from app.crud.customers import *
+from app.ui.utils import clear_screen
 
 def customer_menu():
     while True:
+        clear_screen()
         print("\n***Customers Menu***")
         print("Select an option")
         print("0: Back to main menu")
