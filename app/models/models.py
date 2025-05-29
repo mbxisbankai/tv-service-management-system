@@ -17,7 +17,8 @@ class Provider( Base ):
     subscriptions = relationship("Subscription", back_populates="provider")
 
     def __repr__(self):
-        return f"<Provider ID {self.id}: {self.name} ({self.tagline})>"
+        return f"[Provider #{self.id}] {self.name} — \"{self.tagline}\""
+
     
 class Subscription( Base ):
     __tablename__ = "subscriptions"
@@ -34,8 +35,14 @@ class Subscription( Base ):
     customer = relationship("Customer", back_populates="subscriptions")
 
     def __repr__(self):
-        return f"<Subscription ID {self.id}: Provider Name: {self.provider_name} | Customer ID: ({self.customer_id}) Price: {self.price} Sub Date: {self.sub_date} | Exp Date: {self.exp_date}>"
-    
+        return (
+        f"[Subscription #{self.id}] "
+        f"Provider: {self.provider_name} | "
+        f"Customer ID: {self.customer_id} | "
+        f"Price: {self.price} | "
+        f"Start: {self.sub_date} → Expiry: {self.exp_date}"
+    )
+
 class Customer( Base ):
     __tablename__ = "customers"
 
@@ -45,7 +52,8 @@ class Customer( Base ):
     subscriptions = relationship("Subscription", back_populates="customer", cascade="all, delete-orphan")
 
     def __repr__(self):
-        return f"<Customer ID {self.id}: {self.name}>"
+        return f"[Customer #{self.id}] {self.name}"
+
 
     
 
