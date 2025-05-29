@@ -8,14 +8,14 @@ def provider_menu():
         print_info("Select an option")
         print_option("[0]: Back to main menu")
         print_option("[1]: View all providers")
-        print_option("[2]: Get provider (Name required)")
-        print_option("[3]: Get provider's customers (Name required)")
-        print_option("[4]: Create provider (Name & tagline required)")
-        print_option("[5]: View a provider's active subscriptions (Name required)")
-        print_option("[6]: View a provider's inactive subscriptions (Name required)")
-        print_option("[7]: Get a provider's total monthly revenue (Name required)")
-        print_option("[8]: Update a provider's info (Name required)")
-        print_option("[9]: Delete a provider (Name required)")
+        print_option("[2]: Get provider (Provider name required)")
+        print_option("[3]: Get provider's customers (Provider name required)")
+        print_option("[4]: Create provider (Provider's name & tagline required)")
+        print_option("[5]: View a provider's active subscriptions (Provider's name required)")
+        print_option("[6]: View a provider's inactive subscriptions (Provider's name required)")
+        print_option("[7]: Get a provider's total monthly revenue (Provider's name required)")
+        print_option("[8]: Update a provider's info (Provider's name required)")
+        print_option("[9]: Delete a provider (Provider's name required)")
 
         choice = input_prompt("Enter choice: ").strip()
 
@@ -26,9 +26,7 @@ def provider_menu():
         elif choice == "1":
             providers = get_all_providers()
             if providers:
-                print_option("\nList of Providers")
-                for provider in providers:
-                    print_info(provider)
+                display_providers(providers)
             else:
                 print_warning("No providers found")
             input_prompt("\nPress Enter to return to the menu[blink] | [/blink]")
@@ -51,8 +49,7 @@ def provider_menu():
                 print_option(f"\nList of '{p_name}' customers\n")
                 customers = get_customers(p_name)
                 if customers:
-                    for customer in customers:
-                        print_info(customer)
+                    display_customers(customers)
                 else:
                     print_warning(f"No customers found for '{p_name}'.")
             else:
@@ -77,8 +74,7 @@ def provider_menu():
             if p_name:
                 active_subs = active_subscriptions(p_name)
                 if active_subs:
-                    for active_sub in active_subs:
-                        print_info(active_sub)
+                    display_subscriptions(active_subs)
                 else:
                     print_warning(f"No active subscriptions for '{p_name}'.")
             else:
@@ -91,8 +87,7 @@ def provider_menu():
             if p_name:
                 inactive_subs = inactive_subscriptions(p_name)
                 if inactive_subs:
-                    for inactive_sub in inactive_subs:
-                        print_info(inactive_sub)
+                    display_subscriptions(inactive_subs)
                 else:
                     print_warning(f"No inactive subscriptions for '{p_name}'.")
             else:
@@ -136,8 +131,7 @@ def provider_menu():
                     delete_provider(p_name)
                     remaining_providers = get_all_providers()
                     print_option("\nRemaining providers")
-                    for provider in remaining_providers:
-                        print_info(provider)
+                    display_providers(remaining_providers)
                 else:
                     return
             else:

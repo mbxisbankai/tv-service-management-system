@@ -8,12 +8,12 @@ def subscription_menu():
         print_info("Select an option")
         print_option("[0]: Back to main menu")
         print_option("[1]: View all subscriptions")
-        print_option("[2]: Get a subscription (ID required)")
-        print_option("[3]: Get the subscription provider (ID required)")
-        print_option("[4]: Get the subscriber (ID required)")
-        print_option("[5]: Update a subscription (ID, Provider Name, Price, Customer ID required)")
-        print_option("[6]: Renew a subscription (ID, Provider Name, Price, Customer ID required)")
-        print_option("[7]: Unsubscribe (ID required)")
+        print_option("[2]: Get a subscription (Subscription ID required)")
+        print_option("[3]: Get the subscription provider (Subscription ID required)")
+        print_option("[4]: Get the subscribers (Subscription ID required)")
+        print_option("[5]: Update a subscription (Subscription ID, Provider Name, Price, Customer ID required)")
+        print_option("[6]: Renew a subscription (Subscription ID, Provider Name, Price, Customer ID required)")
+        print_option("[7]: Unsubscribe (Subscription ID required)")
 
         choice = input_prompt("\nEnter choice: ").strip()
 
@@ -23,9 +23,7 @@ def subscription_menu():
         elif choice == "1":
             subscriptions = get_all_subscriptions()
             if subscriptions:
-                print_option("\nList of Subscriptions\n")
-                for sub in subscriptions:
-                    print_info(sub)
+                display_subscriptions(subscriptions)
             else:
                 print_warning("No subscriptions found.")
             input_prompt("\nPress Enter to return to the menu[blink] | [/blink]")
@@ -103,8 +101,7 @@ def subscription_menu():
                     remaining_subscriptions = get_all_subscriptions()
                     print_success(f"Successfully unsubscribed from subscription with ID: {sub_id}")
                     print_option("\nRemaining subscriptions")
-                    for sub in remaining_subscriptions:
-                        print_info(sub)
+                    display_subscriptions(remaining_subscriptions)
                 else:
                     return
             else:

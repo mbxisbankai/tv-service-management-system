@@ -8,13 +8,13 @@ def customer_menu():
         print_info("Select an option")
         print_option("[0]: Back to main menu")
         print_option("[1]: View all customers")
-        print_option("[2]: Get a customer (ID required)")
-        print_option("[3]: Get customer's subscriptions (ID required)")
-        print_option("[4]: Get customer's providers (ID required)")
-        print_option("[5]: Create customer (Name required)")
-        print_option("[6]: Update customer (ID & name required)")
-        print_option("[7]: Delete customer (ID required)")
-        print_option("[8]: Add a subscription (ID, Provider Name & Price required)")
+        print_option("[2]: Get a customer (Customer ID required)")
+        print_option("[3]: Get customer's subscriptions (Customer ID required)")
+        print_option("[4]: Get customer's providers (Customer ID required)")
+        print_option("[5]: Create customer (Customer name required)")
+        print_option("[6]: Update customer (Customer's ID & name required)")
+        print_option("[7]: Delete customer (Customer ID required)")
+        print_option("[8]: Add a subscription (Customer ID, Provider Name & Price required)")
 
         choice = input_prompt("\nEnter choice: ").strip()
 
@@ -24,9 +24,7 @@ def customer_menu():
         elif choice == "1":
             customers = get_all_customers()
             if customers:
-                print_option("\nList of Customers:")
-                for customer in customers:
-                    print_info(customer)
+                display_customers(customers)
             else:
                 print_warning("No customers found.")
             input_prompt("\nPress Enter to return to the menu[blink] | [/blink]")
@@ -49,8 +47,7 @@ def customer_menu():
                 subscriptions = get_subscriptions(c_id)
                 print("\n")
                 if subscriptions:
-                    for subscription in subscriptions:
-                        print_info(subscription)
+                    display_subscriptions(subscriptions)
                 else:
                     print_warning(f"No subscriptions found for customer with ID: {c_id}")
             input_prompt("\nPress Enter to return to the menu[blink] | [/blink]")
@@ -62,8 +59,7 @@ def customer_menu():
                 providers = get_providers(c_id)
                 if providers:
                     print("\n")
-                    for provider in providers:
-                        print_info(provider)
+                    display_providers(providers)
                 else:
                     print_warning(f"No providers found for customer with ID: {c_id}")
             input_prompt("\nPress Enter to return to the menu[blink] | [/blink]")
@@ -101,8 +97,7 @@ def customer_menu():
                         delete_customer(c_id)
                         remaining_customers = get_all_customers()
                         print_option("\nRemaining Customers")
-                        for customer in remaining_customers:
-                            print_info(customer)
+                        display_customers(remaining_customers)
                     else:
                         return
                 else:
