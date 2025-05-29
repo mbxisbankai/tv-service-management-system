@@ -28,7 +28,23 @@ cd tv-service-management-system/
 ```bash
 pipenv install && pipenv shell
 ```
-3. Run the CLI
+
+## Usage
+Run the CLI
 ```bash
+cd tv-service-project/
 python cli.py
 ```
+## Interface
+
+### Main Menu
+![Main Menu](assets/main_menu.png "Main Menu")
+
+### Customer Menu
+![Customer Menu](assets/customers_menu.png "Customer Menu")
+
+### Provider Menu
+![Provider Menu](assets/providers_menu.png "Provider Menu")
+
+### Subscription Menu
+![Subscription Menu](assets/subscriptions_menu.png "Subscriptions Menu")
