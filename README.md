@@ -32,10 +32,13 @@ pipenv install && pipenv shell
 ## Usage
 Run the CLI
 ```bash
-cd tv-service-project/
+cd tv-service-management-system/
 python cli.py
 ```
 ## The CLI (command-line interface)
+
+An interface that makes accessing the database through the terminal easier.
+Theme is heavily inspired by Neon Genesis Evangelion
 
 ### Main Menu
 ![Main Menu](assets/main_menu.png "Main Menu")
