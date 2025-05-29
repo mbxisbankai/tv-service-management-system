@@ -4,7 +4,7 @@ from app.ui.utils import *
 def provider_menu():
     while True:
         clear_screen()
-        print_header("\nProviders Menu")
+        print_header("Providers Menu")
         print_info("Select an option")
         print_option("[0]: Back to main menu")
         print_option("[1]: View all providers")
@@ -36,11 +36,12 @@ def provider_menu():
         #get_provider_by_name()
         elif choice == "2":
             p_name = input_prompt("Enter the provider's name: ").strip()
-            if p_name:
+            provider = get_provider_by_name(p_name)
+            if provider:
                 print("\n")
-                print_info(get_provider_by_name(p_name))
+                print_info(provider)
             else:
-                print_warning("Please enter a valid provider name")
+                print_warning(f"No provider named '{p_name} found.")
             input_prompt("\nPress Enter to return to the menu[blink] | [/blink]")
         
         #get_customers()
@@ -79,7 +80,7 @@ def provider_menu():
                     for active_sub in active_subs:
                         print_info(active_sub)
                 else:
-                    print_warning(f"No active subsctiptions for '{p_name}'.")
+                    print_warning(f"No active subscriptions for '{p_name}'.")
             else:
                 print_warning("Please enter a valid provider name.")
             input_prompt("\nPress Enter to return to the menu[blink] | [/blink]")
@@ -93,7 +94,7 @@ def provider_menu():
                     for inactive_sub in inactive_subs:
                         print_info(inactive_sub)
                 else:
-                    print_warning(f"No inactive subsctiptions for '{p_name}'.")
+                    print_warning(f"No inactive subscriptions for '{p_name}'.")
             else:
                 print_warning("Please enter a valid provider name.")
             input_prompt("\nPress Enter to return to the menu[blink] | [/blink]")
@@ -108,7 +109,7 @@ def provider_menu():
                 else:
                     print_warning(f"\nNo revenue for '{p_name}'.")
             else:
-                print_warning(f"\nNo revenue for '{p_name}'.")
+                print_warning("Please enter a valid provider name.")
             input_prompt("\nPress Enter to return to the menu[blink] | [/blink]")
 
         #update_provider()
@@ -116,12 +117,12 @@ def provider_menu():
             p_id = input_prompt("Enter the provider's ID: ").strip()
             p_name = input_prompt("Enter the provider's name: ").strip()
             p_tagline = input_prompt("Enter the provider's tagline: ").strip()
+            updated_provider = update_provider(p_id, p_name, p_tagline)
 
-            if p_id and p_name and p_tagline:
-                updated_provider = update_provider(p_id, p_name, p_tagline)
+            if update_provider:
                 print_success(f"\nProvider '{p_name}' updated successfully: {updated_provider}")
             else:
-                print_warning("Please enter the valid ID, name and tagline for the provider.")
+                print_warning("Update failed — check if the provider ID is correct.")
             input_prompt("\nPress Enter to return to the menu[blink] | [/blink]")
 
         #delete_provider()

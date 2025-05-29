@@ -4,7 +4,7 @@ from app.ui.utils import *
 def subscription_menu():
     while True:
         clear_screen()
-        print_header("\nSubscriptions Menu")
+        print_header("Subscriptions Menu")
         print_info("Select an option")
         print_option("[0]: Back to main menu")
         print_option("[1]: View all subscriptions")
@@ -33,9 +33,10 @@ def subscription_menu():
         #get_subscription_by_id()
         elif choice == "2":
             sub_id = input_prompt("Enter the subscription ID: ").strip()
-            if sub_id:
+            subscription = get_subscription_by_id(sub_id)
+            if subscription:
                 print("\n")
-                print_info(get_subscription_by_id(sub_id))
+                print_info(subscription)
             else:
                 print_warning(f"No subscription with ID: {sub_id} found")
             input_prompt("\nPress Enter to return to the menu[blink] | [/blink]")
@@ -43,9 +44,10 @@ def subscription_menu():
         #get_provider()
         elif choice == "3":
             sub_id = input_prompt("Enter the subscription ID: ").strip()
-            if sub_id:
+            provider = get_provider(sub_id)
+            if provider:
                 print("\n")
-                print_info(get_provider(sub_id))
+                print_info(provider)
             else:
                 print_warning(f"\nPlease enter a valid subscription ID")
             input_prompt("\nPress Enter to return to the menu[blink] | [/blink]")
@@ -53,9 +55,10 @@ def subscription_menu():
         #get_customer()
         elif choice == "4":
             sub_id = input_prompt("Enter the subscription ID: ").strip()
-            if sub_id:
+            customer = get_customer(sub_id)
+            if customer:
                 print("\n")
-                print_info(get_customer(sub_id))
+                print_info(customer)
             else:
                 print_warning(f"\nPlease enter a valid subscription ID")
             input_prompt("\nPress Enter to return to the menu[blink] | [/blink]")
@@ -66,12 +69,12 @@ def subscription_menu():
             p_name = input_prompt("Enter the provider name: ").strip()
             sub_price = input_prompt("Enter the subscription price: ").strip()
             c_id = input_prompt("Enter the customer's ID: ").strip()
+            updated_subscription = update_subscription(sub_id, sub_price, p_name, c_id)
 
-            if sub_id and p_name and sub_price and c_id:
-                updated_subscription = update_subscription(sub_id, sub_price, p_name, c_id)
+            if updated_subscription:
                 print_success(f"\nSubscription to '{p_name}' updated successfully: {updated_subscription}")
             else:
-                print_error("Missing or invalid arguments. Please try again.")
+                print_error("Failed to update. Make sure all IDs are valid.")
             input_prompt("\nPress Enter to return to the menu[blink] | [/blink]")
 
         #renew_subscription()
@@ -80,18 +83,19 @@ def subscription_menu():
             p_name = input_prompt("Enter the provider name: ").strip()
             sub_price = input_prompt("Enter the subscription price: ").strip()
             c_id = input_prompt("Enter the customer's ID: ").strip()
+            renewed_subscription = renew_subscription(sub_id, sub_price, p_name, c_id)
 
-            if sub_id and p_name and sub_price and c_id:
-                renewed_subscription = renew_subscription(sub_id, sub_price, p_name, c_id)
+            if renewed_subscription:
                 print_success(f"\nSubscription to '{p_name}' renewed successfully: {renewed_subscription}")
             else:
-                print_error("Missing or invalid arguments. Please try again.")
+                print_error("Failed to update. Make sure all IDs are valid.")
             input_prompt("\nPress Enter to return to the menu[blink] | [/blink]")
 
         #delete_subscription()
         elif choice == "7":
             sub_id = input_prompt("\nEnter the subscription ID: ").strip()
-            if sub_id:
+            subscription = get_subscription_by_id(sub_id)
+            if subscription:
                 print_warning("\nThis action cannot be undone")
                 prompt = input_prompt("\nContinue(1) or Exit(0): ").strip()
                 if prompt == "1":

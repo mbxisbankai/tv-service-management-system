@@ -4,7 +4,7 @@ from app.ui.utils import *
 def customer_menu():
     while True:
         clear_screen()
-        print_header("\nCustomers Menu")
+        print_header("Customers Menu")
         print_info("Select an option")
         print_option("[0]: Back to main menu")
         print_option("[1]: View all customers")
@@ -34,7 +34,8 @@ def customer_menu():
         #get_customer_by_id()
         elif choice == "2":
             c_id = input_prompt("Enter the customer's ID: ").strip()
-            if c_id:
+            customer = get_customer_by_id(c_id)
+            if customer:
                 print("\n")
                 print_info(get_customer_by_id(c_id))
             else:
@@ -50,8 +51,8 @@ def customer_menu():
                 if subscriptions:
                     for subscription in subscriptions:
                         print_info(subscription)
-            else:
-                print_warning(f"No subscriptions found for customer with ID: {c_id}")
+                else:
+                    print_warning(f"No subscriptions found for customer with ID: {c_id}")
             input_prompt("\nPress Enter to return to the menu[blink] | [/blink]")
 
         #get_providers()
@@ -59,11 +60,12 @@ def customer_menu():
             c_id = input_prompt("Enter the customer's ID: ").strip()
             if c_id:
                 providers = get_providers(c_id)
-                print("\n")
-                for provider in providers:
-                    print_info(provider)
-            else:
-                print_warning(f"No providers found for customer with ID: {c_id}")
+                if providers:
+                    print("\n")
+                    for provider in providers:
+                        print_info(provider)
+                else:
+                    print_warning(f"No providers found for customer with ID: {c_id}")
             input_prompt("\nPress Enter to return to the menu[blink] | [/blink]")
 
         #create_customer()
@@ -80,7 +82,7 @@ def customer_menu():
         elif choice == "6":
             c_id = input_prompt("\nEnter the customer's ID: ").strip()
             c_name = input_prompt("\nEnter the customer's new name: ").strip()
-            if c_id and c_id:
+            if c_id and c_name:
                 updated_customer = update_customer(c_id, c_name)
                 print_success(f"\nCustomer '{c_name}' updated successfully: {updated_customer}")
             else:
@@ -91,18 +93,22 @@ def customer_menu():
         elif choice == "7":
             c_id = input_prompt("Enter the customer's ID: ").strip()
             if c_id:
-                print_warning("\nThis action cannot be undone")
-                prompt = input_prompt("\nContinue(1) or Exit(0): ")
-                if prompt == "1":
-                    delete_customer(c_id)
-                    remaining_customers = get_all_customers()
-                    print_option("\nRemaining Customers")
-                    for customer in remaining_customers:
-                        print_info(customer)
+                customer = get_customer_by_id(c_id)
+                if customer:
+                    print_warning("\nThis action cannot be undone")
+                    prompt = input_prompt("\nContinue(1) or Exit(0): ")
+                    if prompt == "1":
+                        delete_customer(c_id)
+                        remaining_customers = get_all_customers()
+                        print_option("\nRemaining Customers")
+                        for customer in remaining_customers:
+                            print_info(customer)
+                    else:
+                        return
                 else:
-                    return
+                    print_warning(f"No customer with ID: {c_id} was found")
             else:
-                print_warning(f"No customer with ID: {c_id} was found")
+                print_warning("Please enter a valid customer ID")
             input_prompt("\nPress Enter to return to the menu[blink] | [/blink]")
 
         elif choice == "8":
