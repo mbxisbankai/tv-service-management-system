@@ -35,7 +35,7 @@ Run the CLI
 cd tv-service-project/
 python cli.py
 ```
-## Interface
+## The CLI (command-line interface)
 
 ### Main Menu
 ![Main Menu](assets/main_menu.png "Main Menu")
