@@ -5,23 +5,22 @@ from rich.theme import Theme
 def clear_screen():
     os.system('cls' if os == 'nt' else 'clear')
 
-custom_theme = Theme(
+neon_genesis_theme = Theme(
     {
-    "header": "bold cyan underline",
+    "header": "bold black on bright_cyan",
     "option": "bright_green",
     "info": "bold cyan",
-    "warning": "bright_yellow",
-    "error": "bold bright_red",
-    "success": "bold bright_green",
+    "warning": "bold black on bright_yellow",
+    "error": "bold black on bright_red",
+    "success": "bold black on bright_green",
     "prompt": "bold magenta1",
     }
 )
-console = Console(theme=custom_theme)
+console = Console(theme=neon_genesis_theme)
 
 
 def print_header(text):
-    decorated = f"*** {text} ***"
-    console.print(decorated, style="header")
+    console.print(f"[header]{text}[/header]")
 
 def print_option(text):
     console.print(f"[option]{text}[/option]")

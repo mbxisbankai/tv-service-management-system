@@ -47,8 +47,9 @@ def customer_menu():
             if c_id:
                 subscriptions = get_subscriptions(c_id)
                 print("\n")
-                for subscription in subscriptions:
-                    print_info(subscription)
+                if subscriptions:
+                    for subscription in subscriptions:
+                        print_info(subscription)
             else:
                 print_warning(f"No subscriptions found for customer with ID: {c_id}")
             input_prompt("\nPress Enter to return to the menu[blink] | [/blink]")
@@ -118,3 +119,4 @@ def customer_menu():
             input_prompt("\nPress Enter to return to the menu[blink] | [/blink]")
         else:
             print_error("Invalid option, please try again.")
+            input_prompt("\nPress Enter to return to the menu[blink] | [/blink]")
