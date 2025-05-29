@@ -8,13 +8,13 @@ def customer_menu():
         print_info("Select an option")
         print_option("[0]: Back to main menu")
         print_option("[1]: View all customers")
-        print_option("[2]: Get a customer (Customer ID required)")
-        print_option("[3]: Get customer's subscriptions (Customer ID required)")
-        print_option("[4]: Get customer's providers (Customer ID required)")
-        print_option("[5]: Create customer (Customer name required)")
-        print_option("[6]: Update customer (Customer's ID & name required)")
-        print_option("[7]: Delete customer (Customer ID required)")
-        print_option("[8]: Add a subscription (Customer ID, Provider Name & Price required)")
+        print_option("[2]: Get a customer [bold](Customer ID required)[/bold]")
+        print_option("[3]: Get customer's subscriptions [bold](Customer ID required)[/bold]")
+        print_option("[4]: Get customer's providers [bold](Customer ID required)[/bold]")
+        print_option("[5]: Create customer [bold](Customer name required)[/bold]")
+        print_option("[6]: Update customer [bold](Customer's ID & name required)[/bold]")
+        print_option("[7]: Delete customer [bold](Customer ID required)[/bold]")
+        print_option("[8]: Add a subscription [bold](Customer ID, Provider Name & Price required)[/bold]")
 
         choice = input_prompt("\nEnter choice: ").strip()
 
@@ -27,7 +27,7 @@ def customer_menu():
                 display_customers(customers)
             else:
                 print_warning("No customers found.")
-            input_prompt("\nPress Enter to return to the menu[blink] | [/blink]")
+            input_prompt("\nPress Enter to return to the menu ↵")
         
         #get_customer_by_id()
         elif choice == "2":
@@ -38,7 +38,7 @@ def customer_menu():
                 print_info(get_customer_by_id(c_id))
             else:
                 print_warning(f"No customer with ID: {c_id} found")
-            input_prompt("\nPress Enter to return to the menu[blink] | [/blink]")
+            input_prompt("\nPress Enter to return to the menu ↵")
 
         #get_subscriptions()
         elif choice == "3":
@@ -50,7 +50,7 @@ def customer_menu():
                     display_subscriptions(subscriptions)
                 else:
                     print_warning(f"No subscriptions found for customer with ID: {c_id}")
-            input_prompt("\nPress Enter to return to the menu[blink] | [/blink]")
+            input_prompt("\nPress Enter to return to the menu ↵")
 
         #get_providers()
         elif choice == "4":
@@ -62,7 +62,7 @@ def customer_menu():
                     display_providers(providers)
                 else:
                     print_warning(f"No providers found for customer with ID: {c_id}")
-            input_prompt("\nPress Enter to return to the menu[blink] | [/blink]")
+            input_prompt("\nPress Enter to return to the menu ↵")
 
         #create_customer()
         elif choice == "5":
@@ -72,7 +72,7 @@ def customer_menu():
                 print_success(f"Customer '{c_name}' created successfully: {new_customer}")
             else:
                 print_warning("Please enter a valid name.")
-            input_prompt("\nPress Enter to return to the menu[blink] | [/blink]")
+            input_prompt("\nPress Enter to return to the menu ↵")
 
         #update_customer()
         elif choice == "6":
@@ -83,7 +83,7 @@ def customer_menu():
                 print_success(f"\nCustomer '{c_name}' updated successfully: {updated_customer}")
             else:
                 print_warning("Please enter a valid ID and name.")
-            input_prompt("\nPress Enter to return to the menu[blink] | [/blink]")
+            input_prompt("\nPress Enter to return to the menu ↵")
 
         #delete_customer()
         elif choice == "7":
@@ -104,7 +104,7 @@ def customer_menu():
                     print_warning(f"No customer with ID: {c_id} was found")
             else:
                 print_warning("Please enter a valid customer ID")
-            input_prompt("\nPress Enter to return to the menu[blink] | [/blink]")
+            input_prompt("\nPress Enter to return to the menu ↵")
 
         elif choice == "8":
             c_id = input_prompt("Enter the customer's ID: ").strip()
@@ -117,7 +117,7 @@ def customer_menu():
                 print_info(f"Subscription: {new_subscription}")
             else:
                 print_warning("Please enter a valid customer ID, provider name and subscription price.")
-            input_prompt("\nPress Enter to return to the menu[blink] | [/blink]")
+            input_prompt("\nPress Enter to return to the menu ↵")
         else:
             print_error("Invalid option, please try again.")
-            input_prompt("\nPress Enter to return to the menu[blink] | [/blink]")
+            input_prompt("\nPress Enter to return to the menu ↵")

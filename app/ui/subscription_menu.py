@@ -8,12 +8,12 @@ def subscription_menu():
         print_info("Select an option")
         print_option("[0]: Back to main menu")
         print_option("[1]: View all subscriptions")
-        print_option("[2]: Get a subscription (Subscription ID required)")
-        print_option("[3]: Get the subscription provider (Subscription ID required)")
-        print_option("[4]: Get the subscribers (Subscription ID required)")
-        print_option("[5]: Update a subscription (Subscription ID, Provider Name, Price, Customer ID required)")
-        print_option("[6]: Renew a subscription (Subscription ID, Provider Name, Price, Customer ID required)")
-        print_option("[7]: Unsubscribe (Subscription ID required)")
+        print_option("[2]: Get a subscription [bold](Subscription ID required)[/bold]")
+        print_option("[3]: Get the subscription provider [bold](Subscription ID required)[/bold]")
+        print_option("[4]: Get the subscribers [bold](Subscription ID required)[/bold]")
+        print_option("[5]: Update a subscription [bold](Subscription ID, Provider Name, Price, Customer ID required)[/bold]")
+        print_option("[6]: Renew a subscription [bold](Subscription ID, Provider Name, Price, Customer ID required)[/bold]")
+        print_option("[7]: Unsubscribe [bold](Subscription ID required)[/bold]")
 
         choice = input_prompt("\nEnter choice: ").strip()
 
@@ -26,7 +26,7 @@ def subscription_menu():
                 display_subscriptions(subscriptions)
             else:
                 print_warning("No subscriptions found.")
-            input_prompt("\nPress Enter to return to the menu[blink] | [/blink]")
+            input_prompt("\nPress Enter to return to the menu ↵")
 
         #get_subscription_by_id()
         elif choice == "2":
@@ -37,7 +37,7 @@ def subscription_menu():
                 print_info(subscription)
             else:
                 print_warning(f"No subscription with ID: {sub_id} found")
-            input_prompt("\nPress Enter to return to the menu[blink] | [/blink]")
+            input_prompt("\nPress Enter to return to the menu ↵")
 
         #get_provider()
         elif choice == "3":
@@ -48,7 +48,7 @@ def subscription_menu():
                 print_info(provider)
             else:
                 print_warning(f"\nPlease enter a valid subscription ID")
-            input_prompt("\nPress Enter to return to the menu[blink] | [/blink]")
+            input_prompt("\nPress Enter to return to the menu ↵")
 
         #get_customer()
         elif choice == "4":
@@ -59,7 +59,7 @@ def subscription_menu():
                 print_info(customer)
             else:
                 print_warning(f"\nPlease enter a valid subscription ID")
-            input_prompt("\nPress Enter to return to the menu[blink] | [/blink]")
+            input_prompt("\nPress Enter to return to the menu ↵")
 
         #update_subscription()
         elif choice == "5":
@@ -73,7 +73,7 @@ def subscription_menu():
                 print_success(f"\nSubscription to '{p_name}' updated successfully: {updated_subscription}")
             else:
                 print_error("Failed to update. Make sure all IDs are valid.")
-            input_prompt("\nPress Enter to return to the menu[blink] | [/blink]")
+            input_prompt("\nPress Enter to return to the menu ↵")
 
         #renew_subscription()
         elif choice == "6":
@@ -87,7 +87,7 @@ def subscription_menu():
                 print_success(f"\nSubscription to '{p_name}' renewed successfully: {renewed_subscription}")
             else:
                 print_error("Failed to update. Make sure all IDs are valid.")
-            input_prompt("\nPress Enter to return to the menu[blink] | [/blink]")
+            input_prompt("\nPress Enter to return to the menu ↵")
 
         #delete_subscription()
         elif choice == "7":
@@ -106,10 +106,10 @@ def subscription_menu():
                     return
             else:
                 print_warning(f"\nNo subscription with ID: {sub_id} was found")
-            input_prompt("\nPress Enter to return to the menu[blink] | [/blink]")
+            input_prompt("\nPress Enter to return to the menu ↵")
 
         else:
             print_error("Invalid option, please try again.")
-            input_prompt("\nPress Enter to return to the menu[blink] | [/blink]")
+            input_prompt("\nPress Enter to return to the menu ↵")
 
     

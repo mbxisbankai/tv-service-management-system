@@ -8,14 +8,14 @@ def provider_menu():
         print_info("Select an option")
         print_option("[0]: Back to main menu")
         print_option("[1]: View all providers")
-        print_option("[2]: Get provider (Provider name required)")
-        print_option("[3]: Get provider's customers (Provider name required)")
-        print_option("[4]: Create provider (Provider's name & tagline required)")
-        print_option("[5]: View a provider's active subscriptions (Provider's name required)")
-        print_option("[6]: View a provider's inactive subscriptions (Provider's name required)")
-        print_option("[7]: Get a provider's total monthly revenue (Provider's name required)")
-        print_option("[8]: Update a provider's info (Provider's name required)")
-        print_option("[9]: Delete a provider (Provider's name required)")
+        print_option("[2]: Get provider [bold](Provider name required)[/bold]")
+        print_option("[3]: Get provider's customers [bold](Provider name required)[/bold]")
+        print_option("[4]: Create provider [bold](Provider's name & tagline required)[/bold]")
+        print_option("[5]: View a provider's active subscriptions [bold](Provider's name required)[/bold]")
+        print_option("[6]: View a provider's inactive subscriptions [bold](Provider's name required)[/bold]")
+        print_option("[7]: Get a provider's total monthly revenue [bold](Provider's name required)[/bold]")
+        print_option("[8]: Update a provider's info [bold](Provider's name required)[/bold]")
+        print_option("[9]: Delete a provider [bold](Provider's name required)[/bold]")
 
         choice = input_prompt("Enter choice: ").strip()
 
@@ -29,7 +29,7 @@ def provider_menu():
                 display_providers(providers)
             else:
                 print_warning("No providers found")
-            input_prompt("\nPress Enter to return to the menu[blink] | [/blink]")
+            input_prompt("\nPress Enter to return to the menu ↵")
         
         #get_provider_by_name()
         elif choice == "2":
@@ -40,7 +40,7 @@ def provider_menu():
                 print_info(provider)
             else:
                 print_warning(f"No provider named '{p_name} found.")
-            input_prompt("\nPress Enter to return to the menu[blink] | [/blink]")
+            input_prompt("\nPress Enter to return to the menu ↵")
         
         #get_customers()
         elif choice == "3":
@@ -54,7 +54,7 @@ def provider_menu():
                     print_warning(f"No customers found for '{p_name}'.")
             else:
                 print_warning(f"\nPlease enter a valid provider name.")
-            input_prompt("\nPress Enter to return to the menu[blink] | [/blink]")
+            input_prompt("\nPress Enter to return to the menu ↵")
 
         #create_provider()
         elif choice == "4":
@@ -66,7 +66,7 @@ def provider_menu():
                 print_success(f"\nProvider '{p_name}' created successfully.")
             else:
                 print_warning("\nPlease enter a valid provider name and tagline")
-            input_prompt("\nPress Enter to return to the menu[blink] | [/blink]")
+            input_prompt("\nPress Enter to return to the menu ↵")
 
         #active_subscriptions()
         elif choice == "5":
@@ -79,7 +79,7 @@ def provider_menu():
                     print_warning(f"No active subscriptions for '{p_name}'.")
             else:
                 print_warning("Please enter a valid provider name.")
-            input_prompt("\nPress Enter to return to the menu[blink] | [/blink]")
+            input_prompt("\nPress Enter to return to the menu ↵")
 
         #inactive_subscriptions()
         elif choice == "6":
@@ -92,7 +92,7 @@ def provider_menu():
                     print_warning(f"No inactive subscriptions for '{p_name}'.")
             else:
                 print_warning("Please enter a valid provider name.")
-            input_prompt("\nPress Enter to return to the menu[blink] | [/blink]")
+            input_prompt("\nPress Enter to return to the menu ↵")
 
         #total_revenue()
         elif choice == "7":
@@ -105,7 +105,7 @@ def provider_menu():
                     print_warning(f"\nNo revenue for '{p_name}'.")
             else:
                 print_warning("Please enter a valid provider name.")
-            input_prompt("\nPress Enter to return to the menu[blink] | [/blink]")
+            input_prompt("\nPress Enter to return to the menu ↵")
 
         #update_provider()
         elif choice == "8":
@@ -118,7 +118,7 @@ def provider_menu():
                 print_success(f"\nProvider '{p_name}' updated successfully: {updated_provider}")
             else:
                 print_warning("Update failed — check if the provider ID is correct.")
-            input_prompt("\nPress Enter to return to the menu[blink] | [/blink]")
+            input_prompt("\nPress Enter to return to the menu ↵")
 
         #delete_provider()
         elif choice == "9":
@@ -136,7 +136,7 @@ def provider_menu():
                     return
             else:
                 print_warning("Please enter a valid provider name")
-            input_prompt("\nPress Enter to return to the menu[blink] | [/blink]")
+            input_prompt("\nPress Enter to return to the menu ↵")
         else:
             print_error("Invalid option, please try again")
-            input_prompt("\nPress Enter to return to the menu[blink] | [/blink]")
+            input_prompt("\nPress Enter to return to the menu ↵")
