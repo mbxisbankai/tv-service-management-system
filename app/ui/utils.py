@@ -49,6 +49,8 @@ def display_subscriptions(subscriptions):
     sub_table.add_column("ID", style="cyan", no_wrap=True)
     sub_table.add_column("Provider Name", style="magenta")
     sub_table.add_column("Price", justify="right", style="bright_cyan")
+    sub_table.add_column("Subscription Date", style="magenta")
+    sub_table.add_column("Expiry Date", style="magenta")
     sub_table.add_column("Customer ID", style="bright_green")
 
     for sub in subscriptions:
@@ -56,6 +58,8 @@ def display_subscriptions(subscriptions):
             str(sub.id),
             sub.provider_name,
             f"${sub.price:.2f}",
+            sub.sub_date.strftime("%Y-%m-%d"),
+            sub.exp_date.strftime("%Y-%m-%d"),
             str(sub.customer_id)
         )
     console.print(sub_table)
