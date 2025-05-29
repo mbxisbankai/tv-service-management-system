@@ -1,5 +1,5 @@
 from app.crud.subscriptions import *
-from app.ui.utils import clear_screen
+from app.ui.utils import *
 
 def subscription_menu():
     while True:

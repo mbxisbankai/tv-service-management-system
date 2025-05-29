@@ -1,5 +1,5 @@
 from app.crud.providers import *
-from app.ui.utils import clear_screen
+from app.ui.utils import *
 
 def provider_menu():
     while True:
