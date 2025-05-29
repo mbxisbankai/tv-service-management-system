@@ -109,15 +109,14 @@ def provider_menu():
 
         #update_provider()
         elif choice == "8":
-            p_id = input_prompt("Enter the provider's ID: ").strip()
             p_name = input_prompt("Enter the provider's name: ").strip()
             p_tagline = input_prompt("Enter the provider's tagline: ").strip()
-            updated_provider = update_provider(p_id, p_name, p_tagline)
+            updated_provider = update_provider(p_name, p_tagline)
 
             if update_provider:
                 print_success(f"\nProvider '{p_name}' updated successfully: {updated_provider}")
             else:
-                print_warning("Update failed — check if the provider ID is correct.")
+                print_warning("Update failed — check if the provider name is correct.")
             input_prompt("\nPress Enter to return to the menu ↵")
 
         #delete_provider()
@@ -125,7 +124,7 @@ def provider_menu():
             p_name = input_prompt("Enter the provider's name: ").strip()
 
             if p_name:
-                print("\nThis action cannot be undone.")
+                print_warning("\nThis action cannot be undone.")
                 prompt = input_prompt("Continue(1) or Exit(0): ").strip()
                 if prompt == "1":
                     delete_provider(p_name)
